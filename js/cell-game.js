@@ -1,5 +1,6 @@
-// remove-game.js - 合并后的纯前端版本
-let removeSteps = [];
+// cell-game.js - 传代细胞培养模块
+
+let cellSteps = [];
 let currentStep = 1;
 let score = 0;
 let selectedOption = null;
@@ -28,189 +29,140 @@ const restartBtn = document.getElementById('restart-btn');
 const progressStepsContainer = document.querySelector('.progress-steps');
 const completionMessage = document.getElementById('completion-message');
 const stepTips = document.getElementById('step-tips');
+const safetyHint = document.getElementById('safety-hint');
 
-// 脱防护服步骤数据（原来remove.js中的数据）
-const removeStepsData = [
+// 传代细胞培养步骤数据
+const cellStepsData = [
     {
         step: 1,
         title: "第一步",
-        question: "在开始脱下防护服时，第一步应该做什么？",
+        question: "在进行细胞传代培养时，第一步应该做什么？",
         options: [
-            { id: 1, text: "摘护目镜", correct: false },
-            { id: 2, text: "脱防护服、外层手套", correct: false },
-            { id: 3, text: "手卫生", correct: true },
-            { id: 4, text: "摘一次性帽子", correct: false }
+            { id: 1, text: "洗涤细胞", correct: true },
+            { id: 2, text: "培养细胞", correct: false },
+            { id: 3, text: "中和胰酶", correct: false },
+            { id: 4, text: "杀死污染细菌", correct: false }
         ],
-        feedbackCorrect: "正确！第一步是手卫生，确保双手清洁。",
-        feedbackIncorrect: "错误。第一步应该是手卫生。",
-        image: "/microbiology_experiment/images/remove/1.png",
-        imageCaption: "脱防护服前先消毒双手",
-        tips: ["使用速干手消毒剂", "遵循七步洗手法", "确保手部所有表面都消毒", "等待消毒剂完全干燥"]
+        feedbackCorrect: "正确！洗涤细胞的目的是去除残留的培养基和血清成分，因为血清中含有胰酶抑制剂，会影响后续胰酶的消化效果。通常使用PBS或无血清培养基洗涤1-2次。",
+        feedbackIncorrect: "错误。洗涤细胞是为了去除残留培养基中的血清成分（胰酶抑制剂），保证后续胰酶能够有效消化细胞。",
+        image: "/microbiology_experiment/images/cell/1.png",
+        imageCaption: "用PBS洗涤细胞",
+        tips: [
+            "吸弃旧的培养基",
+            "加入适量PBS（磷酸盐缓冲液）",
+            "轻轻晃动培养瓶，清洗细胞表面",
+            "吸弃PBS，重复洗涤1-2次",
+            "去除血清中的胰酶抑制剂"
+        ]
     },
     {
         step: 2,
         title: "第二步",
-        question: "接下来应该：",
+        question: "洗涤细胞后，第二步应该怎么做？",
         options: [
-            { id: 1, text: "脱内层鞋套", correct: false },
-            { id: 2, text: "脱内层手套", correct: false },
-            { id: 3, text: "摘护目镜", correct: true },
-            { id: 4, text: "手卫生", correct: false }
+            { id: 1, text: "直接离心", correct: false },
+            { id: 2, text: "消化细胞", correct: true },
+            { id: 3, text: "分装", correct: false },
+            { id: 4, text: "用蒸馏水处理", correct: false }
         ],
-        feedbackCorrect: "正确！第二步是摘护目镜。",
-        feedbackIncorrect: "错误。第二步应该是摘护目镜。",
-        image: "/microbiology_experiment/images/remove/2.png",
-        imageCaption: "小心摘下护目镜",
-        tips: ["低头防止飞溅", "从后方解开系带", "避免触碰护目镜外表面", "放入消毒容器"]
+        feedbackCorrect: "正确！消化细胞时加入适量胰酶（0.25% Trypsin-EDTA），37℃孵育2-5分钟，在显微镜下观察到细胞变圆、细胞间间隙增大、细胞脱落时，即可终止消化。",
+        feedbackIncorrect: "错误。消化细胞应加入胰蛋白酶，37℃孵育，待细胞变圆脱落后及时终止。消化时间过长会损伤细胞。",
+        image: "/microbiology_experiment/images/cell/2.png",
+        imageCaption: "加入胰酶消化细胞",
+        tips: [
+            "加入适量0.25%胰酶-EDTA溶液",
+            "37℃培养箱中孵育2-5分钟",
+            "显微镜下观察细胞形态变化",
+            "细胞变圆、间隙增大时终止消化",
+            "避免消化过度损伤细胞"
+        ]
     },
     {
         step: 3,
-        title: "第三步",
-        question: "接下来应该：",
+        title: "第三步: 中和胰酶",
+        question: "细胞消化完成后，第三步需要做什么？",
         options: [
-            { id: 1, text: "摘一次性帽子", correct: false },
-            { id: 2, text: "手卫生", correct: false },
-            { id: 3, text: "脱防护服、外层手套", correct: true },
-            { id: 4, text: "摘医用防护口罩", correct: false }
+            { id: 1, text: "用PBS冲洗", correct: false },
+            { id: 2, text: "中和胰酶", correct: true },
+            { id: 3, text: "直接离心", correct: false },
+            { id: 4, text: "加入胰酶抑制剂", correct: false }
         ],
-        feedbackCorrect: "正确！第三步是脱防护服和外层手套。",
-        feedbackIncorrect: "错误。第三步应该是脱防护服和外层手套。",
-        image: "/microbiology_experiment/images/remove/3.png",
-        imageCaption: "脱下防护服和外层手套",
-        tips: ["从内向外卷脱防护服", "外层手套随防护服一起脱下", "避免接触防护服外表面", "内面向外折叠"]
+        feedbackCorrect: "正确！中和胰酶时加入含血清的完全培养基，血清中的蛋白质可以迅速结合并抑制胰酶活性，保护细胞免受继续消化损伤。",
+        feedbackIncorrect: "错误。中和胰酶应加入含血清的完全培养基，血清中的α1-抗胰蛋白酶等成分可迅速中和胰酶活性。",
+        image: "/microbiology_experiment/images/cell/3.png",
+        imageCaption: "加入含血清培养基中和胰酶",
+        tips: [
+            "加入含10%胎牛血清的完全培养基",
+            "培养基体积为胰酶的2-3倍",
+            "轻轻吹打使细胞分散成单细胞悬液",
+            "血清中的成分可快速中和胰酶",
+            "避免气泡产生"
+        ]
     },
     {
         step: 4,
-        title: "第四步",
-        question: "接下来应该：",
+        title: "第四步: 分装",
+        question: "中和胰酶并制成细胞悬液后，第四步是什么？",
         options: [
-            { id: 1, text: "脱内层鞋套", correct: false },
-            { id: 2, text: "手卫生", correct: true },
-            { id: 3, text: "摘护目镜", correct: false },
-            { id: 4, text: "脱防护服、外层手套", correct: false }
+            { id: 1, text: "培养细胞", correct: false },
+            { id: 2, text: "分装", correct: true },
+            { id: 3, text: "全部倒入一个培养瓶", correct: false },
+            { id: 4, text: "再次洗涤", correct: false }
         ],
-        feedbackCorrect: "正确！第四步是再次进行手卫生。",
-        feedbackIncorrect: "错误。第四步应该是手卫生。",
-        image: "/microbiology_experiment/images/remove/4.png",
-        imageCaption: "脱防护服后进行手卫生",
-        tips: ["脱除外层装备后必须洗手", "清除可能接触的污染物", "准备接触内层装备", "确保手部清洁"]
+        feedbackCorrect: "正确！分装时应将细胞悬液按1:2至1:4的比例分装到新的培养瓶中，补充新鲜培养基至适当体积，使细胞能够继续生长。",
+        feedbackIncorrect: "错误。分装时应根据细胞生长速度和实验需求，按适当比例将细胞悬液分装到新的培养容器中。",
+        image: "/microbiology_experiment/images/cell/4.png",
+        imageCaption: "分装细胞到新培养瓶",
+        tips: [
+            "根据细胞密度确定分装比例（通常1:2-1:4）",
+            "将细胞悬液均匀分装到新培养瓶中",
+            "补充新鲜完全培养基至合适体积",
+            "标记细胞名称、代数、日期",
+            "轻摇培养瓶使细胞分布均匀"
+        ]
     },
     {
         step: 5,
-        title: "第五步",
-        question: "接下来应该：",
+        title: "第五步: 培养",
+        question: "分装完成后，最后一步是什么？",
         options: [
-            { id: 1, text: "脱内层手套", correct: false },
-            { id: 2, text: "摘一次性帽子", correct: false },
-            { id: 3, text: "脱内层鞋套", correct: true },
-            { id: 4, text: "摘医用防护口罩", correct: false }
+            { id: 1, text: "立即放入冰箱", correct: false },
+            { id: 2, text: "37℃、CO₂培养箱中培养", correct: true },
+            { id: 3, text: "中和胰酶", correct: false },
+            { id: 4, text: "放入烘箱", correct: false }
         ],
-        feedbackCorrect: "正确！第五步是脱内层鞋套。",
-        feedbackIncorrect: "错误。第五步应该是脱内层鞋套。",
-        image: "/microbiology_experiment/images/remove/5.png",
-        imageCaption: "脱下内层鞋套",
-        tips: ["从鞋跟部开始脱", "避免接触鞋套外表面", "内面向外卷脱", "放入医疗废物袋"]
-    },
-    {
-        step: 6,
-        title: "第六步",
-        question: "接下来应该：",
-        options: [
-            { id: 1, text: "手卫生", correct: false },
-            { id: 2, text: "脱内层手套", correct: true },
-            { id: 3, text: "摘护目镜", correct: false },
-            { id: 4, text: "脱内层鞋套", correct: false }
-        ],
-        feedbackCorrect: "正确！第六步是脱内层手套。",
-        feedbackIncorrect: "错误。第六步应该是脱内层手套。",
-        image: "/microbiology_experiment/images/remove/6.png",
-        imageCaption: "脱下内层手套",
-        tips: ["捏住手套腕部外侧", "内面向外脱下", "避免接触手套外表面", "两只手套分别处理"]
-    },
-    {
-        step: 7,
-        title: "第七步",
-        question: "接下来应该：",
-        options: [
-            { id: 1, text: "手卫生", correct: true },
-            { id: 2, text: "摘一次性帽子", correct: false },
-            { id: 3, text: "摘医用防护口罩", correct: false },
-            { id: 4, text: "脱防护服、外层手套", correct: false }
-        ],
-        feedbackCorrect: "正确！第七步是再次进行手卫生。",
-        feedbackIncorrect: "错误。第七步应该是手卫生。",
-        image: "/microbiology_experiment/images/remove/7.png",
-        imageCaption: "脱手套后进行手卫生",
-        tips: ["脱除所有手套后必须洗手", "清除可能残留的污染物", "准备接触头部装备", "彻底清洁手部"]
-    },
-    {
-        step: 8,
-        title: "第八步",
-        question: "接下来应该：",
-        options: [
-            { id: 1, text: "摘医用防护口罩", correct: false },
-            { id: 2, text: "摘一次性帽子", correct: true },
-            { id: 3, text: "手卫生", correct: false },
-            { id: 4, text: "脱内层鞋套", correct: false }
-        ],
-        feedbackCorrect: "正确！第八步是摘一次性帽子。",
-        feedbackIncorrect: "错误。第八步应该是摘一次性帽子。",
-        image: "/microbiology_experiment/images/remove/8.png",
-        imageCaption: "摘下一次性帽子",
-        tips: ["从后向前脱下帽子", "避免接触帽子外表面", "内面向外折叠", "放入医疗废物袋"]
-    },
-    {
-        step: 9,
-        title: "第九步",
-        question: "接下来应该：",
-        options: [
-            { id: 1, text: "摘一次性帽子", correct: false },
-            { id: 2, text: "手卫生", correct: false },
-            { id: 3, text: "摘医用防护口罩", correct: true },
-            { id: 4, text: "摘护目镜", correct: false }
-        ],
-        feedbackCorrect: "正确！第九步是摘医用防护口罩。",
-        feedbackIncorrect: "错误。第九步应该是摘医用防护口罩。",
-        image: "/microbiology_experiment/images/remove/9.png",
-        imageCaption: "摘下医用防护口罩",
-        tips: ["只接触口罩带子", "从耳后取下带子", "避免接触口罩外表面", "立即丢弃"]
-    },
-    {
-        step: 10,
-        title: "第十步",
-        question: "脱下所有防护装备后，最后一步应该做什么？",
-        options: [
-            { id: 1, text: "立即离开", correct: false },
-            { id: 2, text: "手卫生", correct: true },
-            { id: 3, text: "坐下休息", correct: false },
-            { id: 4, text: "记录脱卸时间", correct: false }
-        ],
-        feedbackCorrect: "正确！第十步是最后的手卫生，完成所有脱卸步骤。",
-        feedbackIncorrect: "错误。第十步应该是手卫生。",
-        image: "/microbiology_experiment/images/remove/10.png",
-        imageCaption: "完成所有脱卸后彻底洗手",
-        tips: ["使用流动水和肥皂", "洗手时间不少于40秒", "遵循七步洗手法", "用纸巾擦干手"]
+        feedbackCorrect: "正确！培养时应将分装好的细胞放入37℃、5% CO₂的细胞培养箱中，定期观察细胞生长情况，根据细胞状态决定换液或再次传代。",
+        feedbackIncorrect: "错误。培养应在37℃、5% CO₂的恒温培养箱中进行，保持适宜的温度、湿度和CO₂浓度。",
+        image: "/microbiology_experiment/images/cell/5.png",
+        imageCaption: "细胞培养箱中培养",
+        tips: [
+            "将培养瓶放入37℃、5% CO₂培养箱",
+            "瓶盖稍松，保证气体交换",
+            "定期在显微镜下观察细胞生长状态",
+            "根据细胞密度决定是否需要换液",
+            "记录培养日期和细胞状态"
+        ]
     }
 ];
 
 // 加载步骤数据
 function loadSteps() {
     try {
-        console.log('正在加载脱防护服数据...');
+        console.log('正在加载传代细胞培养数据...');
         
         // 显示加载状态
         optionsContainer.innerHTML = '<div class="loading">加载中...</div>';
         questionText.textContent = '正在加载学习内容...';
         
         // 使用本地数据
-        removeSteps = removeStepsData;
-        console.log('成功加载数据，步骤数:', removeSteps.length);
+        cellSteps = cellStepsData;
+        console.log('成功加载数据，步骤数:', cellSteps.length);
         
-        if (!Array.isArray(removeSteps) || removeSteps.length === 0) {
+        if (!Array.isArray(cellSteps) || cellSteps.length === 0) {
             throw new Error('数据格式不正确或为空');
         }
         
-        totalSteps = removeSteps.length;
+        totalSteps = cellSteps.length;
         totalStepsElement.textContent = totalSteps;
         
         // 初始化用户答案数组
@@ -234,18 +186,16 @@ function loadSteps() {
         
     } catch (error) {
         console.error('加载步骤数据失败:', error);
-        
         alert('加载数据失败：' + error.message);
-        // 显示默认问题
         questionText.textContent = '数据加载失败，请刷新页面重试。';
     }
 }
 
 // 从本地存储加载数据
 function loadFromLocalStorage() {
-    const savedProgress = localStorage.getItem('removeProgress');
-    const savedScore = localStorage.getItem('removeScore');
-    const savedAnswers = localStorage.getItem('removeAnswers');
+    const savedProgress = localStorage.getItem('cellProgress');
+    const savedScore = localStorage.getItem('cellScore');
+    const savedAnswers = localStorage.getItem('cellAnswers');
     
     if (savedProgress) {
         currentStep = parseInt(savedProgress);
@@ -276,14 +226,19 @@ function updateTimer() {
 
 // 加载指定步骤
 function loadStep(stepNumber) {
-    if (!removeSteps || removeSteps.length === 0) return;
+    if (!cellSteps || cellSteps.length === 0) return;
     
     // 重置重试次数
     retryCount = 0;
     
-    const step = removeSteps[stepNumber - 1];
+    const step = cellSteps[stepNumber - 1];
     currentStep = stepNumber;
     currentStepElement.textContent = stepNumber;
+    
+    // 显示/隐藏安全提示
+    if (safetyHint) {
+        safetyHint.style.display = stepNumber === 1 ? 'block' : 'none';
+    }
     
     // 更新问题
     questionTitle.textContent = `步骤${stepNumber}: ${step.title}`;
@@ -309,7 +264,7 @@ function loadStep(stepNumber) {
         // 如果之前已回答正确，显示答案状态
         if (userAnswers[stepNumber - 1] !== null) {
             const selectedId = userAnswers[stepNumber - 1];
-            const stepData = removeSteps[stepNumber - 1];
+            const stepData = cellSteps[stepNumber - 1];
             const selectedOptionData = stepData.options.find(o => o.id === selectedId);
             
             if (selectedOptionData && selectedOptionData.correct) {
@@ -345,17 +300,15 @@ function loadStep(stepNumber) {
     // 如果之前已回答正确，显示反馈和图片
     if (userAnswers[stepNumber - 1] !== null) {
         const selectedId = userAnswers[stepNumber - 1];
-        const stepData = removeSteps[stepNumber - 1];
+        const stepData = cellSteps[stepNumber - 1];
         const selectedOption = stepData.options.find(o => o.id === selectedId);
         
         if (selectedOption && selectedOption.correct) {
-            const isCorrect = true;
-            
             feedback.className = 'feedback correct';
             feedback.textContent = step.feedbackCorrect;
             feedback.style.display = 'block';
             
-            if (isCorrect && step.image) {
+            if (step.image) {
                 imageContainer.innerHTML = `
                     <img src="${step.image}" alt="${step.imageCaption || '步骤图片'}" class="step-image">
                     <p class="image-caption">${step.imageCaption || ''}</p>
@@ -386,7 +339,7 @@ function loadStep(stepNumber) {
     // 如果是最后一步且已答完，显示完成消息
     if (stepNumber === totalSteps && userAnswers[stepNumber - 1] !== null) {
         const selectedId = userAnswers[stepNumber - 1];
-        const stepData = removeSteps[stepNumber - 1];
+        const stepData = cellSteps[stepNumber - 1];
         const selectedOptionData = stepData.options.find(o => o.id === selectedId);
         
         if (selectedOptionData && selectedOptionData.correct) {
@@ -409,7 +362,7 @@ function selectOption(optionElement) {
     selectedOption = optionElement;
     
     const optionId = parseInt(optionElement.dataset.id);
-    const step = removeSteps[currentStep - 1];
+    const step = cellSteps[currentStep - 1];
     const option = step.options.find(o => o.id === optionId);
     const isCorrect = option ? option.correct : false;
     
@@ -420,7 +373,7 @@ function selectOption(optionElement) {
         
         // 保存用户答案
         userAnswers[currentStep - 1] = optionId;
-        localStorage.setItem('removeAnswers', JSON.stringify(userAnswers));
+        localStorage.setItem('cellAnswers', JSON.stringify(userAnswers));
         
         // 显示反馈
         feedback.className = 'feedback correct';
@@ -443,16 +396,16 @@ function selectOption(optionElement) {
             }
         });
         
-        // 更新得分
-        score += 10;
+        // 更新得分（每步20分，总分100分）
+        score += 20;
         scoreElement.textContent = score;
         scoreElement.classList.add('score-increase');
         setTimeout(() => {
             scoreElement.classList.remove('score-increase');
         }, 500);
         
-        localStorage.setItem('removeScore', score);
-        localStorage.setItem('removeProgress', currentStep);
+        localStorage.setItem('cellScore', score);
+        localStorage.setItem('cellProgress', currentStep);
         
         // 禁用所有选项，防止重复得分
         document.querySelectorAll('.option').forEach(opt => {
@@ -561,11 +514,11 @@ function retryQuestion() {
 
 // 更新进度步骤显示
 function updateProgressSteps() {
-    if (!removeSteps || removeSteps.length === 0) return;
+    if (!cellSteps || cellSteps.length === 0) return;
     
     progressStepsContainer.innerHTML = '';
     
-    removeSteps.forEach(step => {
+    cellSteps.forEach(step => {
         const stepElement = document.createElement('div');
         stepElement.className = 'progress-step';
         if (step.step === currentStep) stepElement.classList.add('active');
@@ -573,7 +526,7 @@ function updateProgressSteps() {
         // 检查这一步是否已回答正确
         if (userAnswers[step.step - 1] !== null) {
             // 检查是否正确（通过检查option的correct属性）
-            const stepData = removeSteps[step.step - 1];
+            const stepData = cellSteps[step.step - 1];
             const selectedId = userAnswers[step.step - 1];
             const selectedOption = stepData.options.find(o => o.id === selectedId);
             if (selectedOption && selectedOption.correct) {
@@ -591,7 +544,7 @@ function updateProgressSteps() {
         // 添加点击事件，允许跳转到任意步骤
         stepElement.addEventListener('click', () => {
             // 允许跳转到已回答正确或当前步骤及之前的步骤
-            const stepData = removeSteps[step.step - 1];
+            const stepData = cellSteps[step.step - 1];
             const selectedId = userAnswers[step.step - 1];
             const selectedOption = stepData.options.find(o => o.id === selectedId);
             
@@ -619,14 +572,17 @@ function showCompletionMessage() {
     completionMessage.style.display = 'block';
     completionMessage.innerHTML = `
         <h3><i class="fas fa-trophy"></i> 恭喜完成！</h3>
-        <p>您已成功完成脱防护服的所有学习步骤。</p>
+        <p>您已成功完成传代细胞培养的所有学习步骤。</p>
          <!-- 添加流程图 -->
     <div style="margin: 15px 0; text-align: center;">
-        <img src="/microbiology_experiment/images/remove/remove.png" alt="脱防护服流程图" style="max-width: 100%; border-radius: 10px;">
+        <img src="/microbiology_experiment/images/cell/cell.png" alt="传代细胞流程图" style="max-width: 100%; border-radius: 10px;">
     </div>
         <p>最终得分: <strong>${score}</strong>/100</p>
         <p>用时: <strong>${minutes}分${seconds}秒</strong></p>
-        <p>您已掌握脱防护服的关键步骤和要点。</p>
+        <p>您已掌握细胞传代培养的关键步骤和要点：洗涤、消化、中和、分装、培养。</p>
+        <div class="cell-culture-tip" style="margin-top: 20px;">
+            <i class="fas fa-lightbulb"></i> 温馨提示：细胞培养全过程需保持无菌操作，所有试剂和耗材应提前灭菌。
+        </div>
         <button id="review-btn" class="nav-btn" style="margin-top: 15px; margin-right: 10px;">
             <i class="fas fa-redo"></i> 重新学习
         </button>
@@ -646,8 +602,8 @@ function showCompletionMessage() {
     });
     
     // 保存完成状态
-    localStorage.setItem('removeCompleted', 'true');
-    localStorage.setItem('removeProgress', totalSteps);
+    localStorage.setItem('cellCompleted', 'true');
+    localStorage.setItem('cellProgress', totalSteps);
 }
 
 // 重新开始游戏
@@ -660,9 +616,9 @@ function restartGame() {
     retryCount = 0;
     
     // 清除本地存储
-    localStorage.removeItem('removeProgress');
-    localStorage.removeItem('removeScore');
-    localStorage.removeItem('removeAnswers');
+    localStorage.removeItem('cellProgress');
+    localStorage.removeItem('cellScore');
+    localStorage.removeItem('cellAnswers');
     
     // 重置界面
     scoreElement.textContent = '0';
@@ -690,7 +646,7 @@ nextBtn.addEventListener('click', () => {
         // 如果是最后一步且已回答正确，显示完成消息
         if (userAnswers[currentStep - 1] !== null) {
             const selectedId = userAnswers[currentStep - 1];
-            const stepData = removeSteps[currentStep - 1];
+            const stepData = cellSteps[currentStep - 1];
             const selectedOption = stepData.options.find(o => o.id === selectedId);
             
             if (selectedOption && selectedOption.correct) {
@@ -733,6 +689,6 @@ document.addEventListener('keydown', (e) => {
 
 // 初始化游戏
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('页面加载完成，开始初始化脱防护服模块...');
+    console.log('页面加载完成，开始初始化传代细胞培养模块...');
     loadSteps();
 });
