@@ -1,0 +1,67 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="第 1 页" id="Q39wD9DOILUIk1TnCxf4">
+    <mxGraphModel dx="1042" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-3" edge="1" parent="1" source="vqX9qQL9L9BzmZco7hTG-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=12;" target="vqX9qQL9L9BzmZco7hTG-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;fontSize=12;" value="用品准备：一次性医用帽子、医用防护型口罩、防护服、护目镜、鞋套、靴套、手套、手消毒剂" vertex="1">
+          <mxGeometry height="80" width="140" x="80" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-5" edge="1" parent="1" source="vqX9qQL9L9BzmZco7hTG-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=12;" target="vqX9qQL9L9BzmZco7hTG-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-2" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=15;" value="手卫生" vertex="1">
+          <mxGeometry height="60" width="120" x="310" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-7" edge="1" parent="1" source="vqX9qQL9L9BzmZco7hTG-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=12;" target="vqX9qQL9L9BzmZco7hTG-6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-4" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=15;" value="戴医用防护口罩" vertex="1">
+          <mxGeometry height="60" width="120" x="510" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-9" edge="1" parent="1" source="vqX9qQL9L9BzmZco7hTG-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=12;" target="vqX9qQL9L9BzmZco7hTG-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-6" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=15;" value="戴帽子" vertex="1">
+          <mxGeometry height="60" width="120" x="510" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-11" edge="1" parent="1" source="vqX9qQL9L9BzmZco7hTG-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=12;" target="vqX9qQL9L9BzmZco7hTG-10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-8" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=15;" value="戴内层手套" vertex="1">
+          <mxGeometry height="60" width="120" x="310" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-13" edge="1" parent="1" source="vqX9qQL9L9BzmZco7hTG-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=12;" target="vqX9qQL9L9BzmZco7hTG-12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-10" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=15;" value="穿防护服" vertex="1">
+          <mxGeometry height="60" width="120" x="110" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-15" edge="1" parent="1" source="vqX9qQL9L9BzmZco7hTG-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=12;" target="vqX9qQL9L9BzmZco7hTG-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-12" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=15;" value="戴护目镜" vertex="1">
+          <mxGeometry height="60" width="120" x="110" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-17" edge="1" parent="1" source="vqX9qQL9L9BzmZco7hTG-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=12;" target="vqX9qQL9L9BzmZco7hTG-16" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-14" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=15;" value="戴外层手套" vertex="1">
+          <mxGeometry height="60" width="120" x="310" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-19" edge="1" parent="1" source="vqX9qQL9L9BzmZco7hTG-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=12;" target="vqX9qQL9L9BzmZco7hTG-18" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-16" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=15;" value="穿内层鞋套、&lt;div&gt;穿靴套&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="510" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="vqX9qQL9L9BzmZco7hTG-18" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=15;" value="手卫生" vertex="1">
+          <mxGeometry height="60" width="120" x="710" y="410" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

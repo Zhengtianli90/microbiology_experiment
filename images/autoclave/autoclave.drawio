@@ -1,0 +1,43 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="第 1 页" id="DaQhDnBX8SoELu7RivDj">
+    <mxGraphModel dx="1028" dy="611" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="r01aOr-fSo67Yep8ghox-3" edge="1" parent="1" source="r01aOr-fSo67Yep8ghox-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=13;" target="r01aOr-fSo67Yep8ghox-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;fontSize=13;" value="打开电源" vertex="1">
+          <mxGeometry height="60" width="120" x="80" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-5" edge="1" parent="1" source="r01aOr-fSo67Yep8ghox-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=13;" target="r01aOr-fSo67Yep8ghox-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-2" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=13;" value="检查废水壶水位" vertex="1">
+          <mxGeometry height="60" width="120" x="280" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-7" edge="1" parent="1" source="r01aOr-fSo67Yep8ghox-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=13;" target="r01aOr-fSo67Yep8ghox-6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-4" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=13;" value="检查灭菌腔内水位，观察水位指示器" vertex="1">
+          <mxGeometry height="60" width="120" x="480" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-10" edge="1" parent="1" source="r01aOr-fSo67Yep8ghox-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=13;" target="r01aOr-fSo67Yep8ghox-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-6" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=13;" value="装入灭菌物，关闭灭菌锅盖" vertex="1">
+          <mxGeometry height="60" width="120" x="480" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-12" edge="1" parent="1" source="r01aOr-fSo67Yep8ghox-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=none;fontSize=13;" target="r01aOr-fSo67Yep8ghox-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-9" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=13;" value="设置参数，启动仪器" vertex="1">
+          <mxGeometry height="60" width="120" x="280" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="r01aOr-fSo67Yep8ghox-11" parent="1" style="whiteSpace=wrap;html=1;rounded=1;fillColor=none;fontSize=13;" value="灭菌完成，取出灭菌物待用" vertex="1">
+          <mxGeometry height="60" width="120" x="80" y="290" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
